@@ -7,6 +7,9 @@ public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
 
+    public Sprite startSprite;
+    public Sprite endSprite;
+
     private float horizontalInput = 0;
     private float verticalInput = 0;
     public int movementSpeed = 0;
@@ -29,9 +32,9 @@ public class PlayerMovement : MonoBehaviour
         respawnSection = GameObject.Find("Respawn" +  respawnIndex);
         endSection = GameObject.Find("Respawn" + endIndex);
         SpriteRenderer respawnRenderer = respawnSection.GetComponent<SpriteRenderer>();
-        respawnRenderer.color = Color.blue;
+        respawnRenderer.sprite = startSprite;
         SpriteRenderer endRenderer = endSection.GetComponent<SpriteRenderer>();
-        endRenderer.color = Color.green;
+        endRenderer.sprite = endSprite;
         rb = GetComponent<Rigidbody2D>();
         transform.position = respawnSection.transform.position;
     }
