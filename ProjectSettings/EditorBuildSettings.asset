@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Ben's Scene.unity
     guid: 3ee461a82a9f5ac4ca446f72bbd2bf83
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Luke's Scene.unity
+    guid: de8894a764738cf4da63ea53b8be1669
   m_configObjects: {}
