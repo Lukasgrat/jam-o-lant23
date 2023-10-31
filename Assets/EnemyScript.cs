@@ -44,7 +44,16 @@ public class EnemyScript : MonoBehaviour
         rb.AddForce(moveDirection, ForceMode2D.Impulse);
         previousXVel = rb.velocity.x;
         previousYVel = rb.velocity.y;
-        transform.rotation = Quaternion.Euler(0, 0, angle * 180 / Mathf.PI);
+        if (!isScurrying)
+        {
+            float lookingAngle = Mathf.Atan2((player.transform.position.y - transform.position.y), (player.transform.position.x - transform.position.x));
+            transform.rotation  = Quaternion.Euler(0,0, lookingAngle / Mathf.PI * 180 + 90);
+        }
+        else if (isScurrying)
+        {
+            float lookingAngle = Mathf.Atan2((player.transform.position.y - transform.position.y), (player.transform.position.x - transform.position.x));
+            transform.rotation = Quaternion.Euler(0, 0, lookingAngle / Mathf.PI * 180 - 90);
+        }
     }
     void OnCollisionEnter2D(Collision2D coll)
     {
