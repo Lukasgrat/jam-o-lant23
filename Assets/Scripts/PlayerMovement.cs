@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -18,8 +20,10 @@ public class PlayerMovement : MonoBehaviour
     public int endIndex = 0;
     public GameObject respawnSection;
     public GameObject endSection;
+    public GameObject enemy;
     public CircleCollider2D playerCollider;
     public EdgeCollider2D flashLightCollider;
+    public TMP_Text distanceText;
 
     void Start()
     {
@@ -44,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         GetPlayerInput();
+        SetDistanceText();
     }
 
     private void FixedUpdate()
@@ -79,5 +84,10 @@ public class PlayerMovement : MonoBehaviour
                 Time.timeScale = 0;
             }
         }
+    }
+    void SetDistanceText()
+    {
+        int totalDistance = (int)Vector3.Distance(enemy.transform.position, transform.position);
+        distanceText.text = "The clown is: " + totalDistance.ToString() + " meters away!";
     }
 }
