@@ -33,8 +33,10 @@ public class PlayerMovement : MonoBehaviour
         endSection = GameObject.Find("Respawn" + endIndex);
         SpriteRenderer respawnRenderer = respawnSection.GetComponent<SpriteRenderer>();
         respawnRenderer.sprite = startSprite;
+        respawnRenderer.color = Color.white;
         SpriteRenderer endRenderer = endSection.GetComponent<SpriteRenderer>();
         endRenderer.sprite = endSprite;
+        endRenderer.color = Color.white;
         rb = GetComponent<Rigidbody2D>();
         transform.position = respawnSection.transform.position;
     }

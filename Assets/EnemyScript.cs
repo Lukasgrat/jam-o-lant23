@@ -67,7 +67,7 @@ public class EnemyScript : MonoBehaviour
             scurryingWallsLeft = 5;
             isScurrying = true;
         }
-        else if (coll.collider == playerCollider) 
+        else if (coll.collider == playerCollider)
         {
             Debug.Log("Ladies and gentlemen, we got him.");
         }
@@ -77,15 +77,36 @@ public class EnemyScript : MonoBehaviour
             angle = Mathf.Atan2((player.transform.position.y - transform.position.y), (player.transform.position.x - transform.position.x));
             Debug.Log("I'm chasing the player");
         }
+        else if (Vector3.Distance(player.transform.position, transform.position) > attackDistanceTrigger*3 && scurryingWallsLeft == 0) 
+        {
+            angle = Mathf.Atan2((player.transform.position.y - transform.position.y), (player.transform.position.x - transform.position.x));
+            respawnClose();
+        }
         else
         {
             Debug.Log("I'm looking around.");
             rb.AddForce(new Vector2(rb.velocity.x / -2, rb.velocity.y / -2), ForceMode2D.Impulse);
             angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x);
-            if (scurryingWallsLeft > 0) {
+            if (scurryingWallsLeft > 0)
+            {
                 scurryingWallsLeft -= 1;
             }
             isScurrying = false;
         }
+    }
+    void respawnClose() 
+    {
+        float closestDistance = 1000000000000;
+        int index = 0;
+        for (int x = 0; x < 8; x++) {
+            if (Vector3.Distance(player.transform.position, GameObject.Find("EnemyRespawn" + x).transform.position) < closestDistance) 
+            {
+                index = x;
+                closestDistance = Vector3.Distance(player.transform.position, transform.position);
+            }
+        }
+        GameObject respawnNode = GameObject.Find("EnemyRespawn" + index);
+        transform.position = respawnNode.transform.position;
+
     }
 }
