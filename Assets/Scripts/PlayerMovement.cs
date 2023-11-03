@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public int rotationSpeed = 0;
     public int respawnIndex = 0; 
     public int endIndex = 0;
+    public GameObject compass;
     public GameObject respawnSection;
     public GameObject endSection;
     public GameObject enemy;
@@ -58,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
     {
         MovePlayer();
         RotatePlayer();
+        //SetCompass();
     }
 
     private void GetPlayerInput()
@@ -94,4 +96,11 @@ public class PlayerMovement : MonoBehaviour
         int totalDistance = (int)Vector3.Distance(enemy.transform.position, transform.position);
         distanceText.text = "The clown is: " + totalDistance.ToString() + " meters away!";
     }
+    /*
+    void SetCompass()
+    {
+        float andgle = Vector2.Angle(transform.position, endSection.transform.position);
+        compass.transform.eulerAngles = new Vector3(0f, 0f, andgle);
+    }
+    */
 }
