@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ben's Scene 2 (Level Design).unity
     guid: 0850b71002be74a628e5d1589fbfd4c6
+  - enabled: 1
+    path: Assets/Scenes/Win Condition Scene.unity
+    guid: 7d6a027ed2ee24ccab958c28fb74c6f1
+  - enabled: 1
+    path: Assets/Scenes/Lose Condition Scene.unity
+    guid: 644b176e55ce545038304238ac6e8d53
   m_configObjects: {}

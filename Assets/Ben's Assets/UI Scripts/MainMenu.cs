@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+public class SceneSelection : MonoBehaviour
 {
-    public void StartGame ()
+    public void AccessPlayGame ()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        // the scene indexed after Ben's Scene should be the game
-        // (set to SampleScene for now)
+        SceneManager.LoadScene("Ben's Scene 2 (Level Design)");
+    }
+
+    public void AccessMainMenu()
+    {
+        SceneManager.LoadScene("Ben's Scene");
     }
 }

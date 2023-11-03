@@ -14,6 +14,7 @@ public class EnemyScript : MonoBehaviour
     public GameObject flashlightLink;
     public CircleCollider2D playerCollider;
     public EdgeCollider2D flashlightCollider;
+    public AudioSource pianoMusic;
 
     //how many walls the enemy has to hit before searching;
     int  scurryingWallsLeft = 0;
@@ -78,6 +79,7 @@ public class EnemyScript : MonoBehaviour
             rb.AddForce(new Vector2(rb.velocity.x * -1, rb.velocity.y * -1), ForceMode2D.Impulse);
             angle = Mathf.Atan2((player.transform.position.y - transform.position.y), (player.transform.position.x - transform.position.x));
             Debug.Log("I'm chasing the player");
+            pianoMusic.Play();
         }
         else if (Vector3.Distance(player.transform.position, transform.position) > attackDistanceTrigger*3 && scurryingWallsLeft == 0) 
         {
@@ -87,6 +89,7 @@ public class EnemyScript : MonoBehaviour
         else
         {
             Debug.Log("I'm looking around.");
+            pianoMusic.Stop();
             rb.AddForce(new Vector2(rb.velocity.x / -2, rb.velocity.y / -2), ForceMode2D.Impulse);
             angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x);
             if (scurryingWallsLeft > 0)
