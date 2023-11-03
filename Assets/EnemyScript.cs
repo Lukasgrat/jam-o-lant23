@@ -71,6 +71,7 @@ public class EnemyScript : MonoBehaviour
         else if (coll.collider == playerCollider)
         {
             Debug.Log("Ladies and gentlemen, we got him.");
+            SceneManager.LoadScene("Lose Condition Scene");//getGameOver scene
         }
         else if (Vector3.Distance(player.transform.position, transform.position) < attackDistanceTrigger && scurryingWallsLeft == 0)
         {

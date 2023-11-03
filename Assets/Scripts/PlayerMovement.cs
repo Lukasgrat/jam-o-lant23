@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -24,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     public CircleCollider2D playerCollider;
     public EdgeCollider2D flashLightCollider;
     public TMP_Text distanceText;
+    public Scene winScene;
 
     void Start()
     {
@@ -70,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void RotatePlayer()
     {
-        float rotation = horizontalInput * rotationSpeed;
+        float rotation = -horizontalInput * rotationSpeed;
         transform.Rotate(Vector3.forward * rotation);
     }
     private void OnCollisionEnter2D(Collision2D coll) 
@@ -81,6 +84,7 @@ public class PlayerMovement : MonoBehaviour
             if (coll.gameObject.name == endSection.name) 
             {
                 Debug.Log("You win!");
+                SceneManager.LoadScene("Win Condition Scene");//win scene
                 Time.timeScale = 0;
             }
         }
